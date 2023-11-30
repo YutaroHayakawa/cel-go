@@ -529,6 +529,14 @@ func NewObjectType(typeName string, traits ...int) *Type {
 	}
 }
 
+// NewObjectTypeWithParam creates a type reference to an externally defined type like
+// NewObjectType, but with type parameters.
+func NewObjectTypeWithParam(typeName string, params []*Type, traits ...int) *Type {
+	objType := NewObjectType(typeName, traits...)
+	objType.parameters = params
+	return objType
+}
+
 // NewObjectTypeValue creates a type reference to an externally defined type.
 //
 // Deprecated: use cel.ObjectType(typeName)
